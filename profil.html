@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chat</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+        .chat{
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .card{
+            height: 500px;
+            border-radius: 15px;
+            background-color: rgba(0,0,0,0.4);
+
+        }
+        .contacts_body{
+            padding: 0.75rem 0;
+            overflow-y: auto;
+            white-space: nowrap;
+        }
+        .card-header{
+            border-radius: 15px 15px 0 0 ;
+            border-bottom: 0;
+        }
+        .card-footer{
+            border-radius: 0 0 15px 15px ;
+            border-top: 0;
+
+        }
+        .container{
+            align-content: center;
+        }
+        .search{
+            border-radius: 15px 0 0 15px;
+            background-color: rgba(0,0,0,0.4);
+
+            border: 0;
+            color: white;
+        }
+        .search_btn{
+            border-radius: 0 15px 15px 0;
+            background-color: rgba(0,0,0,0.4);
+
+            border: 0;
+            color: white;
+            cursor: pointer;
+        }
+        .contacts{
+            list-style: none;
+            padding: 0;
+        }
+        .contacts li{
+            width: 100%;
+            padding: 5px 10px;
+            margin-bottom: 15px;
+
+        }
+        .active{
+            background-color: black;
+        }
+        .user_img{
+            height: 60px;
+            width: 60px;
+            border: 1.5px solid white;
+        }
+        .user_img_msg{
+            height: 40px;
+            width: 40px;
+            border: 1.5px solid white;
+
+        }
+        .img_cont{
+            position: relative;
+            height: 70px;
+            width: 70px;
+        }
+        .img_cont_msg{
+            height: 40px;
+            width: 40px;
+        }
+        .online_icon{
+            position: absolute;
+            height: 15px;
+            width: 15px;
+            background-color: #4cd137;
+            border-radius: 50%;
+            bottom: 13px;
+            right: 13px;
+            border: 1.5px solid white;
+        }
+        .offline{
+            background-color: red;
+        }
+        .user_info{
+            margin-top: auto;
+            margin-bottom: auto;
+            margin-left: 15px;
+
+        }
+        .user_info span{
+            font-size: 20px;
+            color: white;
+        }
+        .user_info p{
+            font-size: 10px;
+            color: beige;
+        }
+    </style>
+</head>
+<body>
+      <!-- navbar başlangıcı -->
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="index.html">Anasayfa</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="kayıt.html">Kayıt Ol</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="giris.html">Giriş Yap</a>
+              </li>
+            </ul>
+            <div>
+                <button onclick="document.body.style.backgroundColor='#'+Math.floor(Math.random()*12412341).toString(15)">RENK DEĞİŞTİR</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    <!-- navbar bitişi -->
+
+    <!-- profil kısmı başlangıcı -->
+    <div class="profile-innfo text-center">
+        <h2>Kullanıcı Profili</h2>
+        <p><strong>KULLANICI ADI:</strong><span id="kullaniciAdi"></span></p>
+        <p><strong>Email:</strong><span id="email"></span></p>
+        <p><strong>Biyografi:</strong><span id="biyografi"></span></p>
+        <img width="200px" height="200px" style="border-radius: 50px;" src=""  id="profilFoto">
+    </div>
+    <!-- profil kısmı bitişi -->
+    <br><br><br><br><br>
+
+    <!-- online olduğu kısım başlangıcı -->
+  <div class="col-md-4 col-xl-3 chat ms-5">
+    <div class="card mb-sm-3 mb-md-0 contacts_card">
+      <div class="card-header">
+        <div class="input-group">
+          <input type="text" placeholder="Search..." name="" class="form-control search">
+          <div class="input-group-prepend">
+            <span class="input-group-text search_btn"><i class="fas fa-search"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="card-body contacts_body">
+        <ui class="contacts">
+          <li class="active">
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="snr.jpeg" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Soner Hekimoğlu</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="gkhn.jpeg" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Gökhan Bıyıkoğlu</span>
+                <p>Left 7 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="frkn.jpeg" class="rounded-circle user_img">
+                <span class="online_icon"></span>
+              </div>
+              <div class="user_info">
+                <span>Furkan İlaslan</span>
+                <p>Online</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="tnhn.jpeg" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Tunahan Akbul</span>
+                <p>Left 30 mins ago</p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="d-flex bd-highlight">
+              <div class="img_cont">
+                <img src="ozi.PNG" class="rounded-circle user_img">
+                <span class="online_icon offline"></span>
+              </div>
+              <div class="user_info">
+                <span>Oğuzhan Erdem</span>
+                <p>Left 50 mins ago</p>
+              </div>
+            </div>
+          </li>
+        </ui>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+<!-- online olduğu kısım bitişi -->
+<br><br><br><br><br>
+
+  <!-- Messajlaşma başlangıcı-->
+  <div class="col-md-8 col-xl-9 chat ms-5">
+    <div class="card">
+      <div class="card-header msg_head">
+        <div class="d-flex bd-highlight">
+          <!-- bd highlight ögeyi vurgulamak için -->
+          <div class="img_cont">
+            <img src="snr.jpeg" class="rounded-circle user_img">
+            <span class="online_icon"></span>
+          </div>
+          <div class="user_info">
+            <span>Soner Hekimoğlu</span>
+            <p>Online</p>
+          </div>
+        </div>
+      </div>
+      <div class="card-body msg_card_body" id="messageContainer">
+        <!-- Message container will be populated dynamically with JavaScript -->
+      </div>
+      <div class="card-footer">
+        <div class="input-group">
+          <textarea class="form-control type_msg" placeholder="Mesajınızı Giriniz.." id="messageInput"></textarea>
+          <div class="input-group-append">
+            <button type="button" class="btn btn-primary" onclick="sendMessage()">Gönder</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  <!-- Messajlaşma bitişi-->
+
+
+
+
+      <script src="./js/mesajlas.js"></script>
+      <script src="./js/script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    <script>
+        let storedUsers=JSON.parse(localStorage.getItem("kullanicis"))
+
+        if(storedUsers&&storedUsers.length>0){
+            let currentUser=storedUsers[0]
+
+            document.getElementById("kullaniciAdi").innerText=currentUser.kullaniciAdi
+            document.getElementById("email").innerText=currentUser.email
+            document.getElementById("biyografi").innerText=currentUser.biyografi
+            document.getElementById("profilFoto").src=currentUser.profilFoto
+
+
+
+
+        }
+    </script>
+    
+</body>
+</html>
